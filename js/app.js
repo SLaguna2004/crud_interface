@@ -54,3 +54,18 @@ const cargarTabla = () => {
         cuerpoTabla.append(fila);
     });
 };
+
+const agregarGift = (event) => {
+    event.preventDefault();
+
+    let id = datos.at(-1).id + 1;
+    let gift = document.querySelector("#gift").value;
+    let tipo = document.querySelector("#tipo").value;
+    let tiempo = document.querySelector("#tiempo").value;
+    let precio = document.querySelector("#precio").value;
+    let imagen = document.querySelector("#imagen").value;
+
+    datos.push(new Gift(id, gift, tipo, tiempo, precio, imagen));
+    document.querySelector("#formGift").reset();
+    cargarTabla();
+};
