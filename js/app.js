@@ -23,5 +23,34 @@ window.mostrarModal = (id) => {
 const giftUpdate = (e) => {
     e.preventDefault();
     let index = datos.findIndex((item) => item.id == idGiftUpdate);
-    
+    datos[index].gift = document.querySelector("#giftModal").value;
+    datos[index].tipo = document.querySelector("#tipoModal").value;
+    datos[index].tiempo = document.querySelector("#tiempoModal").value;
+    datos[index].precio = document.querySelector("#precioModal").value;
+    datos[index].imagen = document.querySelector("#imagenModal").value;
+
+    cargarTabla();
+    myModal.hide();
 }
+
+const cargarTabla = () => {
+    cuerpoTabla.innerHTML = "";
+    datos.map((item) => {
+        const fila = document.createElement("tr");
+
+        const celdas = `<th>${item.gift}</th>
+            <td>${item.tipo}</td>
+            <td>${item.tiempo}</td>
+            <td>$${item.precio}</td>
+            <td>
+            <div class="d-flex gap-2">
+            <button class="btn btn-outline-warning" onclick="mostrarModal(${item.id})"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button class="btn btn-outline-danger" onclick="borrarGift(${item.id})"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+            </td>
+            `;
+
+        fila.innerHTML = celdas;
+        cuerpoTabla.append(fila);
+    });
+};
