@@ -82,3 +82,8 @@ window.borrarGift = (id) => {
         cargarTabla();
     }
 };
+
+cargarTabla();
+
+document.querySelector("#formGift").addEventListener("submit", agregarGift);
+document.querySelector("#formModal").addEventListener("submit", giftUpdate);

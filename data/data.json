@@ -22,5 +22,13 @@
     "tiempo": "1 mes",
     "precio": 290,
     "imagen": "https://i0.wp.com/fhalcongaming.com/wp-content/uploads/2021/07/GIFTC0109_1.png?fit=1080%2C1080&ssl=1"
+  },
+  {
+    "id": 4,
+    "gift": "Nintendo",
+    "tipo": "Suscripción",
+    "tiempo": "5 mes",
+    "precio": 250,
+    "imagen": "https://i0.wp.com/fhalcongaming.com/wp-content/uploads/2021/07/GIFTC0109_1.png?fit=1080%2C1080&ssl=1"
   }
 ]
