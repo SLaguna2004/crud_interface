@@ -52,6 +52,11 @@ const cargarTabla = () => {
 
         fila.innerHTML = celdas;
         cuerpoTabla.append(fila);
+
+        const img = document.createElement("img");
+        img.src = item.imagen;
+        img.alt = item.gift;
+        fila.appendChild(img);
     });
 };
 
