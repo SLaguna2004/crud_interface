@@ -1,5 +1,6 @@
-import datos from "../data/data.json" assert { type: "json" };
 import { Gift } from "./clases.js";
+import { cargarDatos } from "./funciones.js";
+let datos=[]
 
 const cuerpoTabla = document.querySelector("#cuerpo-tabla");
 const myModal = new bootstrap.Modal(document.getElementById("modalGift"));
@@ -29,11 +30,13 @@ const giftUpdate = (e) => {
     datos[index].precio = document.querySelector("#precioModal").value;
     datos[index].imagen = document.querySelector("#imagenModal").value;
 
+    localStorage.setItem("datos",JSON.stringify(datos))
     cargarTabla();
     myModal.hide();
 }
 
-const cargarTabla = async () => {
+const cargarTabla = () => {
+    datos=JSON.parse(localStorage.getItem("datos"))
     cuerpoTabla.innerHTML = "";
     datos.map((item) => {
         const fila = document.createElement("tr");
@@ -57,7 +60,7 @@ const cargarTabla = async () => {
     });
 };
 
-const agregarGift = async (event) => {
+const agregarGift = (event) => {
     event.preventDefault();
 
     let id = datos.at(-1).id + 1;
@@ -69,6 +72,7 @@ const agregarGift = async (event) => {
 
     datos.push(new Gift(id, gift, tipo, tiempo, precio, imagen));
     document.querySelector("#formGift").reset();
+    localStorage.setItem("datos",JSON.stringify(datos))
     cargarTabla();
 };
 
@@ -81,10 +85,12 @@ window.borrarGift = (id) => {
 
     if (validar) {
         datos.splice(index, 1);
+        localStorage.setItem("datos",JSON.stringify(datos))
         cargarTabla();
     }
 };
 
+cargarDatos();
 cargarTabla();
 
 document.querySelector("#formGift").addEventListener("submit", agregarGift);
