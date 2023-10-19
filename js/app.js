@@ -33,7 +33,7 @@ const giftUpdate = (e) => {
     myModal.hide();
 }
 
-const cargarTabla = () => {
+const cargarTabla = async () => {
     cuerpoTabla.innerHTML = "";
     datos.map((item) => {
         const fila = document.createElement("tr");
@@ -60,7 +60,7 @@ const cargarTabla = () => {
     });
 };
 
-const agregarGift = (event) => {
+const agregarGift = async (event) => {
     event.preventDefault();
 
     let id = datos.at(-1).id + 1;
