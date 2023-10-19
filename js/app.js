@@ -42,6 +42,7 @@ const cargarTabla = async () => {
             <td>${item.tipo}</td>
             <td>${item.tiempo}</td>
             <td>$${item.precio}</td>
+            <td><img src="${item.imagen}" alt="${item.gift}" width="40" height="60"></td>
             <td>
             <div class="d-flex gap-2">
             <button class="btn btn-outline-warning" onclick="mostrarModal(${item.id})"><i class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -53,10 +54,6 @@ const cargarTabla = async () => {
         fila.innerHTML = celdas;
         cuerpoTabla.append(fila);
 
-        const img = document.createElement("img");
-        img.src = item.imagen;
-        img.alt = item.gift;
-        fila.appendChild(img);
     });
 };
 
